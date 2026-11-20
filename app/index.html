@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Neon Coast Cover Studio — GTA-style cover art maker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">NC</span>
+    <div>
+      <h1>Neon Coast Cover Studio</h1>
+      <p>Turn your photos into GTA-style multi-panel cover art.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="undoButton" type="button" disabled>Undo</button>
+    <button id="redoButton" type="button" disabled>Redo</button>
+    <button id="exportAllButton" type="button" class="export-button">Export all 3 sizes</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="preview-column">
+    <div id="dropZone" class="drop-zone">
+      <canvas id="coverPreview" width="960" height="600" aria-label="Live cover preview"></canvas>
+      <p class="drop-hint">Drop photos here, or click a panel then a photo below. Drag a photo to pan it; scroll to zoom.</p>
+    </div>
+    <p id="exportStatus" class="status-line" role="status"></p>
+    <div class="panel-row">
+      <span class="row-label">Selected panel:</span>
+      <div id="panelStrip" class="panel-strip"></div>
+      <label class="zoom-label">Zoom
+        <input id="zoomSlider" type="range" min="50" max="400" value="100" step="5">
+      </label>
+    </div>
+  </section>
+
+  <aside class="controls-column">
+    <section class="control-card">
+      <h2>1 · Photos</h2>
+      <p id="photoCount" class="muted">0 photos loaded</p>
+      <div class="button-row">
+        <button id="loadSamplesButton" type="button">Load sample photos</button>
+        <label class="upload-label">Upload photos
+          <input id="photoUpload" type="file" accept="image/*" multiple hidden>
+        </label>
+      </div>
+      <div id="photoLibrary" class="photo-library"></div>
+      <p class="muted">Click a photo to put it in the selected panel. One photo can fill every panel, or each panel can hold a different photo.</p>
+    </section>
+
+    <section class="control-card">
+      <h2>2 · Layout</h2>
+      <div id="layoutPicker" class="picker-grid"></div>
+    </section>
+
+    <section class="control-card">
+      <h2>3 · Colour grade</h2>
+      <div id="gradePicker" class="picker-grid"></div>
+    </section>
+
+    <section class="control-card">
+      <h2>4 · Lettering</h2>
+      <label class="field-label">Title
+        <input id="titleInput" type="text" value="NEON COAST" maxlength="24">
+      </label>
+      <label class="field-label">Neon script subtitle
+        <input id="subtitleInput" type="text" value="welcome to the coast" maxlength="40">
+      </label>
+      <label class="field-label">Caption
+        <input id="captionInput" type="text" value="One city. Nine stories." maxlength="60">
+      </label>
+      <label class="field-label">Caption size
+        <input id="captionSizeSlider" type="range" min="60" max="160" value="100" step="5">
+      </label>
+      <fieldset class="color-field">
+        <legend>Caption colour</legend>
+        <label><input type="radio" name="captionColor" value="#ffffff" checked> White</label>
+        <label><input type="radio" name="captionColor" value="#ffd319"> Gold</label>
+        <label><input type="radio" name="captionColor" value="#ff8fd0"> Pink</label>
+        <label><input type="radio" name="captionColor" value="#7ef9ff"> Cyan</label>
+      </fieldset>
+      <label class="field-label">Badge ribbon
+        <input id="badgeInput" type="text" value="VICE VIBES" maxlength="18">
+      </label>
+      <label class="field-label">Wanted heat (stars)
+        <input id="heatInput" type="range" min="1" max="5" value="5" step="1">
+      </label>
+    </section>
+
+    <section class="control-card">
+      <h2>Fast &amp; easy</h2>
+      <p>One click exports all three post sizes as PNG: 1080 × 1080, 1080 × 1350 and 1920 × 1080. Everything runs offline in your browser; your photos never leave your machine.</p>
+    </section>
+  </aside>
+</main>
+
+<script type="module" src="src/cover-editor.js"></script>
+</body>
+</html>

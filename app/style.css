@@ -1,0 +1,239 @@
+/* Neon Coast Cover Studio — editor styles.
+ * Dark Vice City theme: deep purple panels, sunset orange accents,
+ * neon pink highlights. All fonts are vendored under app/fonts/. */
+
+@font-face {
+  font-family: "Anton";
+  src: url("fonts/Anton-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Pacifico";
+  src: url("fonts/Pacifico-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #0d0618;
+  color: #f4efff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #1b0b2e, #7b1e5b 55%, #c22e6e);
+  border-bottom: 3px solid #ffd319;
+}
+
+.brand { display: flex; align-items: center; gap: 12px; }
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #ffd319;
+  color: #160a2e;
+  font-family: "Anton", Arial, sans-serif;
+  font-size: 22px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: "Anton", Arial, sans-serif;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.brand p { margin: 0; color: #ffd9ec; font-size: 13px; }
+
+.top-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+button {
+  cursor: pointer;
+  border: 1px solid #6b3a8e;
+  border-radius: 8px;
+  background: #241238;
+  color: #f4efff;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+button:hover:not(:disabled) { background: #3a1c5e; }
+button:disabled { opacity: 0.45; cursor: default; }
+
+.export-button {
+  background: #ff2e88;
+  border-color: #ff2e88;
+  font-weight: bold;
+}
+
+.export-button:hover:not(:disabled) { background: #e0218a; }
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.preview-column { min-width: 0; }
+
+.drop-zone {
+  background: #160a2e;
+  border: 2px dashed #6b3a8e;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.drop-zone.dragging { border-color: #ffd319; background: #241238; }
+
+#coverPreview {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  touch-action: none;
+  cursor: grab;
+}
+
+#coverPreview:active { cursor: grabbing; }
+
+.drop-hint { margin: 10px 4px 2px; color: #c9b8e8; font-size: 13px; }
+
+.status-line { min-height: 20px; color: #7ef9ff; margin: 10px 2px; }
+
+.panel-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.row-label { font-weight: bold; }
+
+.panel-strip { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.panel-chip { padding: 6px 10px; font-size: 13px; }
+.panel-chip.selected { background: #ffd319; color: #160a2e; border-color: #ffd319; font-weight: bold; }
+
+.zoom-label { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+.controls-column { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+.control-card {
+  background: #1b0b2e;
+  border: 1px solid #3a1c5e;
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.control-card h2 {
+  margin: 0 0 10px;
+  font-family: "Anton", Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #ffd319;
+  text-transform: uppercase;
+}
+
+.muted { color: #c9b8e8; font-size: 13px; }
+
+.button-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+
+.upload-label {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #6b3a8e;
+  border-radius: 8px;
+  background: #241238;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+
+.photo-library { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+
+.photo-thumb {
+  padding: 2px;
+  border-radius: 8px;
+}
+
+.photo-thumb.selected { border-color: #ffd319; background: #ffd319; }
+
+.photo-thumb img {
+  display: block;
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.picker-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.picker-chip.selected { background: #ff2e88; border-color: #ff2e88; font-weight: bold; }
+
+.field-label { display: block; margin: 10px 0; font-size: 13px; font-weight: bold; }
+
+.field-label input[type="text"],
+.field-label input[type="range"] { width: 100%; margin-top: 4px; }
+
+.field-label input[type="text"] {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #6b3a8e;
+  background: #0d0618;
+  color: #f4efff;
+  font-size: 15px;
+}
+
+input[type="range"] { accent-color: #ff2e88; }
+
+.color-field {
+  border: 1px solid #3a1c5e;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 8px 10px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-field legend { font-size: 13px; font-weight: bold; }
+.color-field label { font-size: 13px; }
+
+/* Shot modes: the cover fills the whole window, controls hidden. */
+body.shot-mode { background: #12081f; }
+body.shot-mode .topbar,
+body.shot-mode .controls-column,
+body.shot-mode .drop-hint,
+body.shot-mode .status-line,
+body.shot-mode .panel-row { display: none; }
+body.shot-mode .workspace { display: block; padding: 0; max-width: none; }
+body.shot-mode .drop-zone { border: none; border-radius: 0; padding: 0; background: #12081f; }
+body.shot-mode #coverPreview { width: 100vw; height: 100vh; object-fit: contain; border-radius: 0; }
+
+@media (max-width: 900px) {
+  .workspace { grid-template-columns: 1fr; }
+  .brand h1 { font-size: 20px; }
+}
